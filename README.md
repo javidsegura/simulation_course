@@ -1,5 +1,7 @@
 # simulation_course
-<h1> NOTES ON SIMULATING AND MODELLING TO UNDERSTAND CHANGE </h1>
+<h1> Notes on Intro to Simulation </h1>
 
-<p> Alternatives to solve the exercises provides in the courses. </p>
+<p> Alternatives to solve the exercises provided in the courses. </p>
 <p> Includes a full implementation of all exercises per course</p>
+
+<p> <i> Done at suggestion from the Professor </i></p>

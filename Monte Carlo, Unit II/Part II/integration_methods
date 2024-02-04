@@ -1,0 +1,67 @@
+import matplotlib.pyplot as plt
+import numpy as np
+from time import sleep
+
+
+# Declaring basic parameters:
+trials = 100
+replications = 10000
+
+
+class Integration:
+      def __init__(self,func,lower,upper,trials = trials,repetitions = replications): # Change paramter for arbitrary function
+            self.func = func
+            self.lower = lower
+            self.upper = upper
+            self.trials = trials
+            self.repetitions = repetitions
+      def integrate(self,trials = trials,repetitions = replications): # Getting key word arguments for default values
+            self.trials = trials
+            def single_computation(trials):
+                  global x_values, y_values
+                  x_values = np.random.uniform(self.lower, self.upper, trials)
+                  y_values = np.random.uniform(0, self.func(self.upper), trials)
+                  under_curve = np.sum(y_values < self.func(x_values))
+                  total_area = (self.upper - self.lower) *  (self.func(self.upper))
+                  integration = total_area * (under_curve / trials)
+                  return integration
+            integration_output = [single_computation(trials) for i in range(repetitions)] #Avoiding to create a second function by using a list comprenhension
+            return np.mean(integration_output)
+      def graph(self):
+            x_curve = np.linspace(self.lower,self.upper,100)
+            y_curve = self.func(x_curve)
+            x_random = np.random.uniform(self.lower, self.upper, trials)
+            y_random = self.func(x_random)
+
+            plt.figure(figsize=(8, 6))
+            plt.plot(x_curve, y_curve, label=f"f(x)", color='blue')
+            plt.scatter(x_random, y_random, color='red', alpha=0.5)
+            plt.fill_between(x_curve, y_curve, color='blue', alpha=0.3)
+            plt.xlabel("x")
+            plt.ylabel("f(x)")
+            plt.title(f"f(x) estimation in the interval [{self.lower}, {self.upper}]")
+            plt.legend()
+            plt.grid(True)
+            plt.show()
+
+
+# This class accepts all type of functions to be integrated. Should be defined in the following line:
+def func(x):
+      return x ** 2
+
+def func2(x):
+      return x ** 3
+
+
+try1 = Integration(func,0,1)
+try2 = Integration(func2, 4,40)
+
+print(try1.integrate(), try2.integrate(), sep = "\n")
+
+print("I am about to show you the plot of the integration in 3 seconds:")
+print("3",sleep(1)) # Why does none-appear?
+print("2",sleep(1)) 
+print("1",sleep(1))
+
+try1.graph()
+try2.graph() 

@@ -1,4 +1,3 @@
-# simulation_course
 <h1> Notes on Intro to Simulation </h1>
 
 <p> Alternatives to solve the exercises provided in the courses. </p>

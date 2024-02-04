@@ -4,4 +4,4 @@
 <p> Alternatives to solve the exercises provided in the courses. </p>
 <p> Includes a full implementation of all exercises per course</p>
 
-<p> <i> Done at suggestion from the Professor </i></p>
+<p> <i> Note: Done at suggestion from the Professor </i></p>
